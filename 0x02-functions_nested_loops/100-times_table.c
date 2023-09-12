@@ -5,27 +5,27 @@
  */
 void print_times_table(int n)
 {
-	int i, j, prod;
+	int num, mult, prod;
 
 	if (n >= 0 && n <= 15)
 	{
-		for (i = 0; i <= n; i++)
+		for (num = 0; num <= n; num++)
 		{
 			_putchar('0');
-			
-			for (j = 1; j <= n; j++)
+
+			for (mult = 1; mult <= n; mult++)
 			{
 				_putchar(',');
 				_putchar(' ');
 
-				prod = i * j;
-				
+				prod = num * mult;
+
 				if (prod <= 99)
 					_putchar(' ');
 				if (prod <= 9)
 					_putchar(' ');
 
-				if (prod <= 100)
+				if (prod >= 100)
 				{
 					_putchar((prod / 100) + '0');
 					_putchar(((prod / 10)) % 10 + '0');
