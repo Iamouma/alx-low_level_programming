@@ -3,32 +3,21 @@
  *  _strspn - gets the length of a prefix substring
  *  @s: string to be searched
  *  @accept: array to be measured
- *  @Return: number of bytes in 's' which consist only of bytes from accept.
+ *  Return: number of bytes in segment 's'.
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	int h;
-	int k;
-	int l;
+	unsigned int i, j;
 
-	h = 0;
-	l = 0;
-
-	while (s[h] != '\0')
+	i = 0;
+	while (s[i] != '\0')
 	{
-		k = 0;
-		while (accept[k] != '\0')
-		{
-			if (s[h] == accept[k])
-			{
-				l++;
-				break;
-			}
-			k++;
-		}
-		if (accept[k] == '\0')
-			break;
-		h++;
+		j = 0;
+		while (accept[j] != '\0' && s[i] != accept[j])
+			j++;
+		if (accept[j] == '\0')
+			return (i);
+		i++;
 	}
-	return (l);
+	return (i);
 }
