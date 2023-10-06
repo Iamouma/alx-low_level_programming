@@ -1,111 +1,31 @@
 #include "main.h"
 #include <stdlib.h>
-
+#include <stdio.h>
+#include <string.h>
 /**
- * word_count - Count number of words separated by spaces in a string
- * @str: String to check
+ * strtow - concatenates arguments.
+ * @str: String to be splitted.
  *
- * Return: Number of words;
- */
-int word_count(char *str)
-{
-	int count;
-	int i;
-
-	i = count = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] != ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
-		{
-			count++;
-			i++;
-		}
-		i++;
-	}
-	return (count);
-}
-
-/**
- * find_words_len - Find length of all the words in a string
- * @str: String to check length of words in
- * @words: Number of words
- *
- * Return: Combined length of words
- */
-int *find_words_len(char *str, int words)
-{
-	int i, word, len;
-	int *sizes;
-
-	sizes = malloc(words * sizeof(int));
-	if (sizes == NULL)
-		return (NULL);
-	i = word = 0;
-	while (word < words)
-	{
-		if (str[i] != ' ')
-		{
-			len = 0;
-			while (str[i] != ' ')
-			{
-				len++;
-				i++;
-			}
-			len++;
-			sizes[word] = len;
-			word++;
-		}
-		i++;
-	}
-	return (sizes);
-}
-
-/**
- * strtow - Split a string into words
- * @str: String to split
- *
- * Return: Return pointer to an array of strings, NULL if it fails
+ * Return: a pointer to array of String.
  */
 char **strtow(char *str)
 {
-	char **nstr;
-	int words, i, j, k, cur_words, *sizes;
+	char *array = NULL;
+	unsigned int i = 0, j = 0, k;
 
-	if (str == NULL || *str == '\0')
+	if (strncmp(str, "", 1) || str == NULL)
 		return (NULL);
-	words = word_count(str);
-	sizes = malloc(words * sizeof(int));
-	if (sizes == NULL)
+	array = malloc((i + j + 1) * sizeof(char));
+	if (array == NULL)
 		return (NULL);
-	sizes = find_words_len(str, words);
-	nstr = malloc((words + 1) * sizeof(char *));
-	if (nstr == NULL)
-		return (NULL);
-	i = j = k = 0;
-	while (i < words && str[j] != '\0')
+	for (k = 0; k < i; k++)
+		array[k] = str[k];
+	i = k;
+	for (k = 0; k < j; k++)
 	{
-		cur_words = i;
-		nstr[i] = malloc(sizes[i] + sizeof(char));
-		if (nstr[i] == NULL)
-		{
-			for (i = i - 1; i >= 0; i--)
-				free(nstr[i--]);
-			free(nstr);
-			return (NULL);
-		}
-		while (str[j] != '\0' && i == cur_words)
-		{
-			if (str[j] != ' ')
-			{
-				while (str[j] != '\0' && str[j] != ' ')
-				{
-					nstr[i][k] = str[j]; j++; k++;
-				}
-				nstr[i][k] = '\0'; i++; k = 0;
-			}
-			j++;
-		}
+		array[i] = str[k];
+		i++;
 	}
-	nstr[i] = NULL;	free(sizes);
-	return (nstr);
+	array[i] = '\0';
+	return (NULL);
 }
