@@ -17,4 +17,3 @@ int main(void)
     printf("%.3f\n", a);
     return (0);
 }
-
