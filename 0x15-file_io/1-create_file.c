@@ -32,7 +32,7 @@ int create_file(const char *filename, char *text_content)
 }
 
 /**
- * strlen - Function that returns the length of string.
+ * _strlen - Function that returns the length of string.
  * @s: pointer to the null-terminated byte string to be examined.
  * Return: The length of the null-terminated byte string s.
  */
