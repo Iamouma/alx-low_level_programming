@@ -40,7 +40,7 @@ int bin_search(int *array, size_t left, size_t right, int value)
  * @size: number of elements in the array
  * @value: value to search for
  * Return: -1 if value not found or the array is NULL, else
- * 	   the index where the value is located.
+ *         the index where the value is located.
  */
 int exponential_search(int *array, size_t size, int value)
 {
