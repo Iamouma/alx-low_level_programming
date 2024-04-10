@@ -9,23 +9,24 @@
  */
 int jump_search(int *array, size_t size, int value)
 {
-	size_t i, len, jump;
+	size_t i, jump, index;
 
 	if (array == NULL || size == 0)
 		return (-1);
 
+	
 	jump = sqrt(size);
-	for (i = len = 0; len < size && array[len] < value;)
+	for (i = index = 0; index < size && array[index] < value;)
 	{
-		printf("Value checked array[%ld] = [%d]\n", len, array[len]);
-		i = len;
-		len += jump;
+		printf("Value checked array[%ld] = [%d]\n", index, array[index]);
+		i = index;
+		index += jump;
 	}
 
-	printf("Value found between indexes [%ld] and [%ld]\n", i, len);
+	printf("Value found between indexes [%ld] and [%ld]\n", i, index);
 
-	len = len < size - 1 ? len : size - 1;
-	for (; i < jump && array[i] < value; i++)
+	index = index < size - 1 ? index : size - 1;
+	for (; i < index && array[i] < value; i++)
 		printf("Value checked array[%ld] = [%d]\n", i, array[i]);
 	printf("Value checked array[%ld] = [%d]\n", i, array[i]);
 
